@@ -16,6 +16,16 @@ export const ListUser = () => {
       setUsers(response.data);
     });
   }
+// think about making every fetch async
+  const deleteUser = (id) => {
+    try {
+         axios.delete(`http://localhost:8888/api/user/${id}/edit`);
+        setUsers(users.filter(user => user.id !== id));
+    } catch (error) {
+        console.error('error deleting user', error);
+    }
+  };
+
 
   return (
     <section className="listUser">
@@ -40,7 +50,7 @@ export const ListUser = () => {
               <td>{user.actions}</td>
               <td>
                 <Link to={`user/${user.id}/edit`}>Edit</Link>
-                <button>Delete</button>
+                <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>
             </tr>
           ))}
