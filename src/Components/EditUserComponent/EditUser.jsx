@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const EditUser = () => {
+    
+  const navigate = useNavigate()
 
-  const [inputs, setInputs] = useState({})
+  const [inputs, setInputs] = useState([])
+
+  const {id} = useParams();
+
+  useEffect(() => {
+    getUser();
+  }, []);
+//this a fetch in php
+  function getUser() {
+    axios.get(`http://localhost:8888/api/user/${id}`).then(function (response) {
+      console.log(response.data);
+      setInputs(response.data);
+    });
+  }
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -16,14 +32,20 @@ export const EditUser = () => {
         event.preventDefault();
 
         axios.post('http://localhost:8888/api/user/save', inputs)
-        console.log(inputs);
+        .then(function(response){
+            console.log(response.data);
+            navigate('/');
+        })
+        .catch(function(error){
+            console.error('fail', error);
+        })
         
     }
 
   return (
-    <section className="editUserSection">
+    <section className="createUserSection">
 
-      <h2>edit user</h2>
+      <h2>Edit User</h2>
       
       <form onSubmit={handleSubmit} >
       

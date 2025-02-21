@@ -5,7 +5,8 @@ export const Footer = () => {
     <footer className="footerWrapper">
       <div className='footerContainer'>
         <div className='footerTop'>
-          <a href="https://www.egmont.com/"><img src="https://www.nfbio.dk/themes/custom/nfbiodk/assets/img/egmont-footer-logo.svg" alt="Egmont" /></a>
+          <a href="https://www.egmont.com/"><img src="" alt="Egmont" /></a> 
+          {/* https://www.nfbio.dk/themes/custom/nfbiodk/assets/img/egmont-footer-logo.svg */}
         </div>
         {/* Footer GridContainer */}
         <div className='footerGridContainer'>
