@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const CreateUser = () => {
+export const Login = () => {
     const navigate = useNavigate()
 
   const [inputs, setInputs] = useState([])
@@ -17,7 +17,7 @@ export const CreateUser = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8888/api/CrudUser/user/save', inputs)
+        axios.post('http://localhost:8888/api/LogIn.php', inputs)
         .then(function(response){
             console.log(response.data);
             navigate('/');
@@ -29,9 +29,9 @@ export const CreateUser = () => {
     }
 
   return (
-    <section className="createUserSection">
+    <section className="loginUserSection">
 
-      <h2>Create user</h2>
+      <h2>LogIn</h2>
       
       <form onSubmit={handleSubmit} >
       
@@ -39,33 +39,26 @@ export const CreateUser = () => {
         <tbody>
           <tr>
             <th>
-              <label htmlFor="">Name: </label>
+              <label htmlFor="">User Name: </label>
             </th>
             <td>
-              <input type="text" name="name" onChange={handleChange} />
+              <input type="text" name="username" placeholder="Username" onChange={handleChange} />
             </td>
           </tr>
 
           <tr>
             <th>
-              <label htmlFor="">Email: </label>
+              <label htmlFor="">Password: </label>
             </th>
             <td>
-              <input type="text" name="email" onChange={handleChange} />
+              <input type="password" name="password" placeholder="Password" onChange={handleChange} />
             </td>
           </tr>
 
           <tr>
-            <th>
-              <label htmlFor="">Mobile: </label>
-            </th>
-            <td>
-              <input type="text" name="mobile" onChange={handleChange} />
-            </td>
-          </tr>
-          <tr>
+  
             <td colSpan={2} align="right">
-            <button>Save</button>
+            <button type="submit">Login</button>
             </td>
           </tr>
         </tbody>

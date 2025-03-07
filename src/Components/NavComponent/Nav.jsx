@@ -22,7 +22,7 @@ export const Navbar = () => {
         </ul>
         <ul id="link-right">
           <li>
-            <Link to="/">
+            <Link to="/login">
               Log In{" "}
               <img
                 src="../../src/assets/images/AccountLogo.svg"

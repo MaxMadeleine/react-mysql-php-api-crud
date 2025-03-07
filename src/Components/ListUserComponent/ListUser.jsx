@@ -11,7 +11,8 @@ export const ListUser = () => {
   }, []);
 //this a fetch in php
   function getUsers() {
-    axios.get(`http://localhost:8888/api/users`).then(function(response){
+
+    axios.get(`http://localhost:8888/api/CrudUser/users`).then(function(response){
       console.log(response.data);
       setUsers(response.data);
     });
@@ -19,7 +20,7 @@ export const ListUser = () => {
 // think about making every fetch async
   const deleteUser = (id) => {
     try {
-         axios.delete(`http://localhost:8888/api/user/${id}/edit`);
+         axios.delete(`http://localhost:8888/api/CrudUser/user/${id}/edit`);
         setUsers(users.filter(user => user.id !== id));
     } catch (error) {
         console.error('error deleting user', error);
